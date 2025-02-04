@@ -12,11 +12,8 @@ HS Wrapper предоставляет интерфейс для работы с 
 
 
 ## сборка
-<<<<<<< HEAD
-=======
 для сборки необходим [hyperscan](https://github.com/intel/hyperscan)
 
->>>>>>> f8facf3 (Initial commit)
 ```cmd
     meson setup build --buildtype=release [-Dexamples=enabled]
     cd build
@@ -26,15 +23,9 @@ HS Wrapper предоставляет интерфейс для работы с 
 dir - каталог установки
 каталог установки: 
 
-<<<<<<< HEAD
-|заголовочных файлов | dir/include |   
-|файлы библиотек | dir/lib |  
-|примеров | dir/examples | 
-=======
 заголовочных файлов -> dir/include    
 файлы библиотек -> dir/lib    
 примеров -> dir/examples   
->>>>>>> f8facf3 (Initial commit)
 
 
 ## пример
