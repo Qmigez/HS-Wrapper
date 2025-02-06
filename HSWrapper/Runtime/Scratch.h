@@ -4,6 +4,7 @@
 namespace HS {
 
 class Database;
+class Stream;
 
 class Scratch {
 public:
@@ -13,7 +14,9 @@ public:
     Scratch(Scratch&&);
     Scratch& operator=(Scratch&&);
     ~Scratch();
+    
     friend class HS::Database;
+    friend class HS::Stream;
 private:
     Scratch() = default;
 

@@ -1,9 +1,15 @@
 #ifndef HS_WRAPPER_STREAM_INCLUDED
 #define HS_WRAPPER_STREAM_INCLUDED
+#include <string>
+
+#include "HSWrapper/Enums.h"
+
 
 namespace HS {
 
+class AbstractHandler;
 class Database;
+class Scratch;
 
 class Stream {
 public:
@@ -12,7 +18,8 @@ public:
     Stream(Stream&&);
     Stream& operator=(Stream&&);
     ~Stream();
-    
+public:
+    HS::RESULT scan(std::string data, unsigned int flags, HS::Scratch&, HS::AbstractHandler&);
     friend class HS::Database;
 private:
     Stream() = default;

@@ -2,10 +2,12 @@
 
 #include <format>
 
+#include "HSWrapper/AbstractHandler.h"
 #include "HSWrapper/Exception.h"
 #include "HSWrapper/Meta.h"
 #include "HSWrapper/Stream.h"
 
+#include "HSWrapper/Runtime/Scratch.h"
 
 HS::Stream::Stream(const Stream& other) {
     if (this != &other) [[likely]] {
@@ -86,5 +88,28 @@ HS::Stream::~Stream() {
     );
     if (res != HS_SUCCESS) [[unlikely]] {
         Meta::destructorCallback(this, "can't close stream");
+    }
+}
+
+HS::RESULT HS::Stream::scan(std::string data, unsigned int flags, HS::Scratch& scratch, HS::AbstractHandler& ah) {
+    hs_error_t res = hs_scan_stream(
+        static_cast<hs_stream_t*>(this->ptr_),
+        data.c_str(),
+        data.size(),
+        flags,
+        static_cast<hs_scratch_t*>(scratch.ptr_),
+        ah.getHandler(),
+        ah.getCtx()
+    );
+    switch (res) {
+        case HS_SUCCESS:
+            return HS::RESULT::SUCCESS;
+            break;
+        case HS_SCAN_TERMINATED:
+            return HS::RESULT::SCAN_TERMINATED;
+            break;
+        default:
+            throw HS::RuntimeException(std::format("Can't scan stream with code {}", res));
+            break;
     }
 }
