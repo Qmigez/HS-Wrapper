@@ -27,5 +27,9 @@ enum class MODE {
     SOM_HORIZON_MEDIUM = (1U << 25),
     SOM_HORIZON_SMALL = (1U << 26)
 };
+enum class RESULT {
+    SUCCESS, // = HS_SUCCESS
+    SCAN_TERMINATED // = HS_SCAN_TERMINATED
+};
 }
 #endif // HS_WRAPPER_ENUMS_INCLUDED
