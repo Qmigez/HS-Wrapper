@@ -2,6 +2,8 @@
 
 #include "HSWrapper/Meta.h"
 
+#include "HSWrapper/Exception.h"
+
 bool HS::Meta::canBeCompiled(HS::Pattern pattern, HS::MODE mode, HS::PlatformInfo pi) {
     bool out = false;
     hs_compile_error_t* error = nullptr;
@@ -21,4 +23,15 @@ bool HS::Meta::canBeCompiled(HS::Pattern pattern, HS::MODE mode, HS::PlatformInf
     }
     hs_free_compile_error(error);
     return out;
+}
+
+void HS::defaultCallback(void* ptr, std::string message) {
+    throw HS::RuntimeException(message);
+}
+
+void HS::Meta::setDestructorCallback(DestructorCallbackPtr ptr) {
+    destructorCallback_ = ptr;
+}
+void HS::Meta::destructorCallback(void* ptr, std::string message) {
+    destructorCallback_(ptr, message);
 }

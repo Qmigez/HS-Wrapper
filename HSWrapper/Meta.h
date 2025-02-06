@@ -7,10 +7,20 @@
 
 namespace HS {
 
+using DestructorCallbackPtr = void(*)(void*, std::string);
+
 class Meta {
 public:
-    static bool canBeCompiled(HS::Pattern, HS::MODE, HS::PlatformInfo=HS::PlatformInfo()); 
+    static bool canBeCompiled(HS::Pattern, HS::MODE, HS::PlatformInfo=HS::PlatformInfo());
+    static void setDestructorCallback(DestructorCallbackPtr);
+    static void destructorCallback(void*, std::string);
+private:
+    static DestructorCallbackPtr destructorCallback_;
 };
+
+void defaultCallback(void* ptr, std::string);
+
+DestructorCallbackPtr HS::Meta::destructorCallback_ = &defaultCallback;
 
 } // namespace HS
 
