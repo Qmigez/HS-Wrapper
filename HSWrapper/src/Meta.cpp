@@ -25,12 +25,10 @@ bool HS::Meta::canBeCompiled(HS::Pattern pattern, HS::MODE mode, HS::PlatformInf
     return out;
 }
 
-void HS::defaultCallback(void* ptr, std::string message) {
-    throw HS::RuntimeException(message);
-}
 
-void HS::Meta::setDestructorCallback(DestructorCallbackPtr ptr) {
-    destructorCallback_ = ptr;
+
+void HS::Meta::setDestructorCallback(std::function<void(void*, std::string)> func) {
+    destructorCallback_ = func;
 }
 void HS::Meta::destructorCallback(void* ptr, std::string message) {
     destructorCallback_(ptr, message);

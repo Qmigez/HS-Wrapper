@@ -5,8 +5,11 @@
 #include <format>
 #include <iostream>
 
-#include "HSWrapper/Compile/Database.h"
 #include "HSWrapper/Exception.h"
+#include "HSWrapper/Meta.h"
+
+#include "HSWrapper/Compile/Database.h"
+
 
 /*
     HS::Scratch functions
@@ -117,5 +120,6 @@ HS::Database& HS::Database::operator=(HS::Database&& other) noexcept{
 }
 
 HS::Database::~Database() {
-    hs_free_database(static_cast<hs_database_t*>(ptr_));
+    hs_error_t res = hs_free_database(static_cast<hs_database_t*>(ptr_));
+    HS::Meta::destructorCallback(this, std::format("Can't free database with code {}", res));
 }
