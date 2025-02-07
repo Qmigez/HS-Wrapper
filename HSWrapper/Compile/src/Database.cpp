@@ -1,7 +1,5 @@
 #include "hs/hs.h"
 
-#include <cassert>
-
 #include <format>
 #include <iostream>
 
@@ -17,7 +15,6 @@
 
 HS::Scratch HS::Database::allocScratch() {
     HS::Scratch out;
-    assert((out.ptr_ == nullptr) && "Scratch must be nullptr on allocation");
     hs_error_t res = hs_alloc_scratch(
         static_cast<hs_database_t*>(ptr_), 
         reinterpret_cast<hs_scratch_t**>(&out.ptr_)
@@ -121,5 +118,21 @@ HS::Database& HS::Database::operator=(HS::Database&& other) noexcept{
 
 HS::Database::~Database() {
     hs_error_t res = hs_free_database(static_cast<hs_database_t*>(ptr_));
-    HS::Meta::destructorCallback(this, std::format("Can't free database with code {}", res));
+    if (res != HS_SUCCESS) [[unlikely]] {
+        HS::Meta::destructorCallback(this, std::format("Can't free database with code {}", res));
+    }
+}
+
+HS::Stream HS::Database::openStream(unsigned int flags) {
+    HS::Stream out;
+    hs_error_t res = hs_open_stream(
+        static_cast<hs_database_t*>(this->ptr_),
+        flags,
+        reinterpret_cast<hs_stream_t**>(&out.ptr_)
+    );
+    if (res != HS_SUCCESS) [[unlikely]] {
+        std::cout << "nope";
+        throw HS::RuntimeException(std::format("Can't open stream with code {}", res));
+    }
+    return out;
 }

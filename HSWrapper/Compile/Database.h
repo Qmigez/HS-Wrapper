@@ -7,6 +7,7 @@
 #include "HSWrapper/AbstractHandler.h"
 #include "HSWrapper/Enums.h"
 #include "HSWrapper/Pattern.h"
+#include "HSWrapper/Stream.h"
 
 #include "HSWrapper/Compile/PlatformInfo.h"
 
@@ -20,7 +21,11 @@ class Database {
 */
 public:
     HS::Scratch allocScratch();
-
+/*
+    Stream functions
+*/
+public:
+    HS::Stream openStream(unsigned int flags);
 /*
     Scan functions
 */

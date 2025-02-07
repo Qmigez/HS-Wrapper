@@ -1,5 +1,6 @@
 #include <hs/hs.h>
 
+
 #include <format>
 
 #include "HSWrapper/AbstractHandler.h"
@@ -87,7 +88,7 @@ HS::Stream::~Stream() {
         nullptr
     );
     if (res != HS_SUCCESS) [[unlikely]] {
-        Meta::destructorCallback(this, "can't close stream");
+        Meta::destructorCallback(this, std::format("Can't close stream with code {}", res));
     }
 }
 

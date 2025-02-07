@@ -19,7 +19,8 @@ sources = files(
     
     'HSWrapper/src/Exception.cpp',
     'HSWrapper/src/Meta.cpp',
-    'HSWrapper/src/Pattern.cpp'
+    'HSWrapper/src/Pattern.cpp',
+    'HSWrapper/src/Stream.cpp'
 )
 
 wrapper_headers = files(
@@ -50,6 +51,12 @@ HS_Wrapper = both_libraries('HSWrapper',
     install_dir : lib_install_suffix
 )
 
+hs_wrapper_dep = declare_dependency(link_with : HS_Wrapper)
+
 if get_option('examples').enabled()
     subdir('Examples')
+endif
+
+if get_option('tests').enabled()
+    subdir('Tests')
 endif

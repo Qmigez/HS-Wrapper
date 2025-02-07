@@ -1,1 +1,2 @@
 option('examples', type : 'feature')
+option('tests', type : 'feature')
