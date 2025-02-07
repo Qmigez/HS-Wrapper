@@ -1,7 +1,6 @@
 #include <hs/hs.h>
 
 #include <format>
-#include <iostream>
 
 #include "HSWrapper/Exception.h"
 #include "HSWrapper/Meta.h"

@@ -4,7 +4,6 @@
 
 #include "HSWrapper/Enums.h"
 
-
 namespace HS {
 
 class AbstractHandler;

@@ -4,16 +4,15 @@
 #include <string>
 #include <vector>
 
-#include "HSWrapper/AbstractHandler.h"
 #include "HSWrapper/Enums.h"
-#include "HSWrapper/Pattern.h"
-#include "HSWrapper/Stream.h"
-
-#include "HSWrapper/Compile/PlatformInfo.h"
-
-#include "HSWrapper/Runtime/Scratch.h"
 
 namespace HS {
+
+class AbstractHandler;
+class Scratch;
+class Stream;
+class Pattern;
+class PlatformInfo;
 
 class Database {
 /*
@@ -41,7 +40,7 @@ public:
     );
     static HS::Database compileMulti(std::vector<HS::Pattern>, 
         HS::MODE, 
-        HS::PlatformInfo = HS::PlatformInfo()
+        HS::PlatformInfo
     );
 /*
     DB functions

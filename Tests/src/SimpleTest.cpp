@@ -1,10 +1,15 @@
 
 #include "gtest/gtest.h"
 
+#include "HSWrapper/Stream.h"
+#include "HSWrapper/Pattern.h"
 
 #include "HSWrapper/Compile/Database.h"
+#include "HSWrapper/Compile/PlatformInfo.h"
 
-#include "HSWrapper/Stream.h"
+#include "HSWrapper/Runtime/Scratch.h"
+
+
 #include "TestsCore.h"
 
 TEST(Simple, Block) {

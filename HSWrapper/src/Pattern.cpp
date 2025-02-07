@@ -6,6 +6,8 @@
 #include "HSWrapper/Enums.h"
 #include "HSWrapper/Pattern.h"
 
+#include "HSWrapper/Compile/PlatformInfo.h"
+
 HS::Pattern::Pattern(std::string expression, std::vector<HS::FLAG> flags, unsigned int id) : expr_(expression), id_(id) {
     for(auto& f : flags) {
         flags_ |= static_cast<unsigned int>(f);

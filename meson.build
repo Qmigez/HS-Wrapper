@@ -1,5 +1,5 @@
 project('HS_Wrapper', 'cpp',
-    version : '0.0.1',
+    version : '0.0.2',
     default_options : ['cpp_std=c++20']
 )
 
@@ -28,7 +28,8 @@ wrapper_headers = files(
     'HSWrapper/Enums.h',
     'HSWrapper/Exception.h',
     'HSWrapper/Meta.h',
-    'HSWrapper/Pattern.h'
+    'HSWrapper/Pattern.h',
+    'HSWrapper/Stream.h'
 )
 
 wrapper_compile_headers = files(

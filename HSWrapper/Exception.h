@@ -4,7 +4,7 @@
 #include <exception>
 #include <string>
 
-namespace HS{
+namespace HS {
 
 class RuntimeException : public std::exception {
 public:

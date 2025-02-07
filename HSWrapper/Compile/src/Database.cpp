@@ -1,13 +1,17 @@
 #include "hs/hs.h"
 
 #include <format>
-#include <iostream>
 
+#include "HSWrapper/AbstractHandler.h"
 #include "HSWrapper/Exception.h"
 #include "HSWrapper/Meta.h"
+#include "HSWrapper/Pattern.h"
+#include "HSWrapper/Stream.h"
 
 #include "HSWrapper/Compile/Database.h"
+#include "HSWrapper/Compile/PlatformInfo.h"
 
+#include "HSWrapper/Runtime/Scratch.h"
 
 /*
     HS::Scratch functions
@@ -131,7 +135,6 @@ HS::Stream HS::Database::openStream(unsigned int flags) {
         reinterpret_cast<hs_stream_t**>(&out.ptr_)
     );
     if (res != HS_SUCCESS) [[unlikely]] {
-        std::cout << "nope";
         throw HS::RuntimeException(std::format("Can't open stream with code {}", res));
     }
     return out;

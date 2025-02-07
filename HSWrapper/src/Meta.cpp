@@ -1,8 +1,10 @@
 #include <hs/hs.h>
 
-#include "HSWrapper/Meta.h"
-
 #include "HSWrapper/Exception.h"
+#include "HSWrapper/Meta.h"
+#include "HSWrapper/Pattern.h"
+
+#include "HSWrapper/Compile/PlatformInfo.h"
 
 bool HS::Meta::canBeCompiled(HS::Pattern pattern, HS::MODE mode, HS::PlatformInfo pi) {
     bool out = false;

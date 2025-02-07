@@ -4,14 +4,17 @@
 #include <functional>
 #include <string>
 
+#include "HSWrapper/Enums.h"
 #include "HSWrapper/Exception.h"
-#include "HSWrapper/Pattern.h"
 
 namespace HS {
 
+class Pattern;
+class PlatformInfo;
+
 class Meta {
 public:
-    static bool canBeCompiled(HS::Pattern, HS::MODE, HS::PlatformInfo=HS::PlatformInfo());
+    static bool canBeCompiled(HS::Pattern, HS::MODE, HS::PlatformInfo);
     static void setDestructorCallback(std::function<void(void*, std::string)>);
     static void destructorCallback(void*, std::string);
 private:

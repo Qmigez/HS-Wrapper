@@ -8,8 +8,12 @@
 #include <iterator>
 
 #include "HSWrapper/AbstractHandler.h"
+#include "HSWrapper/Pattern.h"
 
 #include "HSWrapper/Compile/Database.h"
+#include "HSWrapper/Compile/PlatformInfo.h"
+
+#include "HSWrapper/Runtime/Scratch.h"
 
 /*
     class used for hadling matching result

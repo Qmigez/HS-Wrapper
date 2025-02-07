@@ -1,5 +1,6 @@
 #ifndef HS_WRAPPER_TESTS_CORE_INCLUDED
 #define HS_WRAPPER_TESTS_CORE_INCLUDED
+
 #include <string>
 #include <format>
 

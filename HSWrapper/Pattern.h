@@ -6,12 +6,11 @@
 
 #include "HSWrapper/Enums.h"
 
-#include "HSWrapper/Compile/PlatformInfo.h"
-
 namespace HS {
 
 class Database;
 class Meta;
+class PlatformInfo;
 
 class Pattern {
 public:
