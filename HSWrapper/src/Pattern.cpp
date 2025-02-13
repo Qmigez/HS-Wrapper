@@ -8,7 +8,7 @@
 
 #include "HSWrapper/Compile/PlatformInfo.h"
 
-HS::Pattern::Pattern(std::string expression, std::vector<HS::FLAG> flags, unsigned int id) : expr_(expression), id_(id) {
+HS::Pattern::Pattern(const std::string& expression, const std::vector<HS::FLAG>& flags, unsigned int id) : expr_(expression), id_(id) {
     for(auto& f : flags) {
         flags_ |= static_cast<unsigned int>(f);
     }
@@ -42,7 +42,7 @@ const static std::map<HS::FLAG, char> reConversion {
     {HS::FLAG::QUIET, 'Q'}
 };
 
-HS::Pattern::Pattern(std::string expression) {
+HS::Pattern::Pattern(const std::string& expression) {
     auto firstSlash = expression.find('/');
     auto lastSlash = expression.rfind('/');
     id_ = std::stoul(expression.substr(0, firstSlash));

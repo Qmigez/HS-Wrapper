@@ -32,7 +32,7 @@ HS::Scratch HS::Database::allocScratch() {
 /*
     Scan functions
 */
-void HS::Database::scan(std::string& data, unsigned int flags, HS::Scratch& scratch, HS::AbstractHandler& ah) {
+void HS::Database::scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler& ah) {
     hs_error_t res = hs_scan(
         static_cast<hs_database_t*>(ptr_),
         data.c_str(),
@@ -50,7 +50,7 @@ void HS::Database::scan(std::string& data, unsigned int flags, HS::Scratch& scra
 /*
     HS::Database static
 */
-HS::Database HS::Database::compile(HS::Pattern expr, HS::MODE mode, HS::PlatformInfo platfrom) {
+HS::Database HS::Database::compile(const HS::Pattern& expr, HS::MODE mode, const HS::PlatformInfo& platfrom) {
     Database db;
 
     hs_compile_error_t* error = nullptr;
@@ -71,7 +71,7 @@ HS::Database HS::Database::compile(HS::Pattern expr, HS::MODE mode, HS::Platform
     }
     return db;
 }
-HS::Database HS::Database::compileMulti(std::vector<HS::Pattern> exprs, HS::MODE mode, HS::PlatformInfo platform) {
+HS::Database HS::Database::compileMulti(const std::vector<HS::Pattern>& exprs, HS::MODE mode, const HS::PlatformInfo& platform) {
     HS::Database out;
     std::vector<const char*> expressons;
     std::vector<unsigned int> flags;

@@ -18,7 +18,7 @@ public:
     Stream& operator=(Stream&&);
     ~Stream();
 public:
-    HS::RESULT scan(std::string data, unsigned int flags, HS::Scratch&, HS::AbstractHandler&);
+    HS::RESULT scan(const std::string& data, unsigned int flags, const HS::Scratch&, HS::AbstractHandler&);
     friend class HS::Database;
 private:
     Stream() = default;

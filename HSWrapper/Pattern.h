@@ -14,10 +14,10 @@ class PlatformInfo;
 
 class Pattern {
 public:
-    Pattern(std::string expression, std::vector<HS::FLAG>, unsigned int id);
+    Pattern(const std::string& expression, const std::vector<HS::FLAG>&, unsigned int id);
     /// @brief 
     /// @param expression format <integer id>:/<regex>/<flags>
-    Pattern(std::string expression);
+    Pattern(const std::string& expression);
 
     std::string toString();
     friend class HS::Database;

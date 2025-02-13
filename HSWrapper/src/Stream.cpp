@@ -92,7 +92,7 @@ HS::Stream::~Stream() {
     }
 }
 
-HS::RESULT HS::Stream::scan(std::string data, unsigned int flags, HS::Scratch& scratch, HS::AbstractHandler& ah) {
+HS::RESULT HS::Stream::scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler& ah) {
     hs_error_t res = hs_scan_stream(
         static_cast<hs_stream_t*>(this->ptr_),
         data.c_str(),

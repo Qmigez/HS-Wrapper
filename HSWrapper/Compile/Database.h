@@ -29,18 +29,18 @@ public:
     Scan functions
 */
 public:
-    void scan(std::string& data, unsigned int flags, HS::Scratch& scratch, HS::AbstractHandler&);
+    void scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler&);
 /*
     DB static functions
 */
 public:
-    static HS::Database compile(HS::Pattern, 
+    static HS::Database compile(const HS::Pattern&, 
         HS::MODE, 
-        HS::PlatformInfo
+        const HS::PlatformInfo&
     );
-    static HS::Database compileMulti(std::vector<HS::Pattern>, 
+    static HS::Database compileMulti(const std::vector<HS::Pattern>&, 
         HS::MODE, 
-        HS::PlatformInfo
+        const HS::PlatformInfo&
     );
 /*
     DB functions

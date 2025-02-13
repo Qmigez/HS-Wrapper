@@ -9,7 +9,6 @@
 
 #include "HSWrapper/Runtime/Scratch.h"
 
-
 #include "TestsCore.h"
 
 TEST(Simple, Block) {

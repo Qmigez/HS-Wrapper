@@ -14,15 +14,15 @@ class PlatformInfo;
 
 class Meta {
 public:
-    static bool canBeCompiled(HS::Pattern, HS::MODE, HS::PlatformInfo);
-    static void setDestructorCallback(std::function<void(void*, std::string)>);
-    static void destructorCallback(void*, std::string);
+    static bool canBeCompiled(const HS::Pattern&, HS::MODE,const HS::PlatformInfo&);
+    static void setDestructorCallback(std::function<void(void*, const std::string&)>);
+    static void destructorCallback(void*, const std::string&);
 private:
-    static void defaultCallback(void* ptr, std::string message) {
+    static void defaultCallback(void* ptr, const std::string& message) {
         throw HS::RuntimeException(message);
     }
 private:
-    inline static std::function<void(void*, std::string)> destructorCallback_ = &defaultCallback;
+    inline static std::function<void(void*, const std::string&)> destructorCallback_ = &defaultCallback;
 };
 
 } // namespace HS

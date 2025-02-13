@@ -6,7 +6,7 @@
 
 #include "HSWrapper/Compile/PlatformInfo.h"
 
-bool HS::Meta::canBeCompiled(HS::Pattern pattern, HS::MODE mode, HS::PlatformInfo pi) {
+bool HS::Meta::canBeCompiled(const HS::Pattern& pattern, HS::MODE mode, const HS::PlatformInfo& pi) {
     bool out = false;
     hs_compile_error_t* error = nullptr;
     hs_database_t* db = nullptr;
@@ -29,9 +29,9 @@ bool HS::Meta::canBeCompiled(HS::Pattern pattern, HS::MODE mode, HS::PlatformInf
 
 
 
-void HS::Meta::setDestructorCallback(std::function<void(void*, std::string)> func) {
+void HS::Meta::setDestructorCallback(std::function<void(void*, const std::string&)> func) {
     destructorCallback_ = func;
 }
-void HS::Meta::destructorCallback(void* ptr, std::string message) {
+void HS::Meta::destructorCallback(void* ptr, const std::string& message) {
     destructorCallback_(ptr, message);
 }
