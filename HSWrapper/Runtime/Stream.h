@@ -1,5 +1,5 @@
-#ifndef HS_WRAPPER_STREAM_INCLUDED
-#define HS_WRAPPER_STREAM_INCLUDED
+#ifndef HS_WRAPPER_RUNTIME_STREAM_INCLUDED
+#define HS_WRAPPER_RUNTIME_STREAM_INCLUDED
 #include <string>
 
 #include "HSWrapper/Enums.h"
@@ -28,4 +28,4 @@ private:
 
 } // namespace HS
 
-#endif // HS_WRAPPER_STREAM_INCLUDED
+#endif // HS_WRAPPER_RUNTIME_STREAM_INCLUDED

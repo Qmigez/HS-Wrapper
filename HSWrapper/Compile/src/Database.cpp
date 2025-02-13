@@ -6,12 +6,12 @@
 #include "HSWrapper/Exception.h"
 #include "HSWrapper/Meta.h"
 #include "HSWrapper/Pattern.h"
-#include "HSWrapper/Stream.h"
 
 #include "HSWrapper/Compile/Database.h"
 #include "HSWrapper/Compile/PlatformInfo.h"
 
 #include "HSWrapper/Runtime/Scratch.h"
+#include "HSWrapper/Runtime/Stream.h"
 
 /*
     HS::Scratch functions

@@ -1,14 +1,13 @@
 #include <hs/hs.h>
 
-
 #include <format>
 
 #include "HSWrapper/AbstractHandler.h"
 #include "HSWrapper/Exception.h"
 #include "HSWrapper/Meta.h"
-#include "HSWrapper/Stream.h"
 
 #include "HSWrapper/Runtime/Scratch.h"
+#include "HSWrapper/Runtime/Stream.h"
 
 HS::Stream::Stream(const Stream& other) {
     if (this != &other) [[likely]] {

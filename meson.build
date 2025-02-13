@@ -1,5 +1,5 @@
 project('HS_Wrapper', 'cpp',
-    version : '0.0.3',
+    version : '0.0.4',
     default_options : ['cpp_std=c++20']
 )
 
@@ -16,11 +16,11 @@ sources = files(
     'HSWrapper/Compile/src/PlatformInfo.cpp',
 
     'HSWrapper/Runtime/src/Scratch.cpp',
+    'HSWrapper/Runtime/src/Stream.cpp',
     
     'HSWrapper/src/Exception.cpp',
     'HSWrapper/src/Meta.cpp',
-    'HSWrapper/src/Pattern.cpp',
-    'HSWrapper/src/Stream.cpp'
+    'HSWrapper/src/Pattern.cpp'
 )
 
 wrapper_headers = files(
@@ -28,8 +28,7 @@ wrapper_headers = files(
     'HSWrapper/Enums.h',
     'HSWrapper/Exception.h',
     'HSWrapper/Meta.h',
-    'HSWrapper/Pattern.h',
-    'HSWrapper/Stream.h'
+    'HSWrapper/Pattern.h'
 )
 
 wrapper_compile_headers = files(
@@ -38,7 +37,8 @@ wrapper_compile_headers = files(
 )
 
 wrapper_runtime_headers = files(
-    'HSWrapper/Runtime/Scratch.h'
+    'HSWrapper/Runtime/Scratch.h',
+    'HSWrapper/Runtime/Stream.h'
 )
 
 install_headers(wrapper_headers, install_dir : headers_install_suffix)
