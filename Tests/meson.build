@@ -5,7 +5,9 @@ tests_exe = executable('tests',
     files(
         'main.cpp',
 
+        'src/UseCasesBlockTest.cpp',
         'src/SimpleTest.cpp'
+        
     ),
     dependencies : [
         gtest_dep,

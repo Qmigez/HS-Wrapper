@@ -23,7 +23,7 @@ TEST(Simple, Block) {
     std::string data = "abca";
     db1.scan(data, 0, sc, sh);
 
-    ASSERT_EQ(sh.getResult(), "0:0:1:0\n0:0:4:0\n");
+    ASSERT_EQ(sh.getResult(), std::unordered_multiset<std::string>({"0:0:1:0", "0:0:4:0"}));
 }
 
 TEST(Simple, Stream) {
@@ -41,5 +41,5 @@ TEST(Simple, Stream) {
     stream.scan("ab", 0, sc, sh);
     stream.scan("ca", 0, sc, sh);
 
-    ASSERT_EQ(sh.getResult(), "0:0:1:0\n0:0:4:0\n");
+    ASSERT_EQ(sh.getResult(), std::unordered_multiset<std::string>({"0:0:1:0", "0:0:4:0"}));
 }

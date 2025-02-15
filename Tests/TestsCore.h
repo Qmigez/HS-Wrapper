@@ -1,6 +1,7 @@
 #ifndef HS_WRAPPER_TESTS_CORE_INCLUDED
 #define HS_WRAPPER_TESTS_CORE_INCLUDED
 
+#include <unordered_set>
 #include <string>
 #include <format>
 
@@ -18,16 +19,16 @@ public:
         res_.clear();
     }
 
-    std::string getResult() const {
+    std::unordered_multiset<std::string> getResult() const {
         return res_;
     }
 private:
     static int handler(unsigned int id, unsigned long long from, unsigned long long to, unsigned int flags, void* ctx) {
-        *static_cast<std::string*>(ctx) += std::format("{}:{}:{}:{}\n", id, from, to, flags);
+        static_cast<std::unordered_multiset<std::string>*>(ctx)->insert(std::format("{}:{}:{}:{}", id, from, to, flags));
         return 0;
     }
 private:
-    std::string res_ = "";
+    std::unordered_multiset<std::string> res_;
 };
 
 #endif // HS_WRAPPER_TESTS_CORE_INCLUDED
