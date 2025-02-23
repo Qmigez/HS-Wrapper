@@ -8,6 +8,8 @@ class Stream;
 
 class Scratch {
 public:
+    size_t size() const;
+public:
     Scratch(const Scratch&);
     Scratch& operator=(const Scratch&);
 

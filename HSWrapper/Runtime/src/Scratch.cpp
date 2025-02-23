@@ -7,6 +7,19 @@
 
 #include "HSWrapper/Runtime/Scratch.h"
 
+size_t HS::Scratch::size() const {
+    size_t size;
+    hs_error_t res = hs_scratch_size(
+        static_cast<const hs_scratch_t*>(this->ptr_),
+        &size
+    );
+    if (res != HS_SUCCESS) [[unlikely]] {
+        throw HS::RuntimeException(std::format("Can't scratch size with code {}", res));
+    }
+    return size;
+}
+
+
 HS::Scratch::Scratch(Scratch&& other) {
     if (this != &other) [[likely]] {
         this->ptr_ = other.ptr_;

@@ -1,10 +1,24 @@
 #include <hs/hs.h>
 
+#include <format>
+
 #include "HSWrapper/Exception.h"
 #include "HSWrapper/Meta.h"
 #include "HSWrapper/Pattern.h"
 
 #include "HSWrapper/Compile/PlatformInfo.h"
+
+void HS::Meta::setAllocator(std::function<void*(size_t)> alloc, std::function<void(void*)> free) {
+    hs_error_t res = hs_set_allocator(
+        alloc.target<void*(size_t)>(),
+        free.target<void(void*)>()
+    );
+    if (res != HS_SUCCESS) [[unlikely]] {
+        throw HS::RuntimeException(std::format("Can't set allocator, with code {}", res));
+    }
+    allocFunc_ = alloc;
+    freeFunc_ = free;    
+}
 
 bool HS::Meta::canBeCompiled(const HS::Pattern& pattern, HS::MODE mode, const HS::PlatformInfo& pi) {
     bool out = false;

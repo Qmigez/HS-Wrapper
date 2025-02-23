@@ -16,20 +16,26 @@ class PlatformInfo;
 
 class Database {
 /*
+    information functions
+*/
+public:
+    std::string info() const;
+    size_t size() const;
+/*
     Scratch functions
 */
 public:
-    HS::Scratch allocScratch();
+    HS::Scratch allocScratch() const;
 /*
     Stream functions
 */
 public:
-    HS::Stream openStream(unsigned int flags);
+    HS::Stream openStream(unsigned int flags) const;
 /*
     Scan functions
 */
 public:
-    void scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler&);
+    void scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler&) const;
 /*
     DB static functions
 */

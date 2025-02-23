@@ -14,10 +14,39 @@
 #include "HSWrapper/Runtime/Stream.h"
 
 /*
+    info functions
+*/
+std::string HS::Database::info() const {
+    char* info = nullptr;
+    hs_error_t res = hs_database_info(
+        static_cast<const hs_database_t*>(this->ptr_),
+        &info
+    );
+    if (res != HS_SUCCESS) [[unlikely]] {
+        throw HS::RuntimeException(std::format("Can't database info, with code {}", res));
+    }
+    std::string out(info);
+    free(info);
+    return out;
+}
+
+size_t HS::Database::size() const {
+    size_t out;
+    hs_error_t res = hs_database_size(
+        static_cast<const hs_database_t*>(this->ptr_),
+        &out
+    );
+    if (res != HS_SUCCESS) [[unlikely]] {
+        throw HS::RuntimeException(std::format("Can't database size, with code {}", res));
+    }
+    return out;
+}
+
+
+/*
     HS::Scratch functions
 */
-
-HS::Scratch HS::Database::allocScratch() {
+HS::Scratch HS::Database::allocScratch() const {
     HS::Scratch out;
     hs_error_t res = hs_alloc_scratch(
         static_cast<hs_database_t*>(ptr_), 
@@ -32,7 +61,7 @@ HS::Scratch HS::Database::allocScratch() {
 /*
     Scan functions
 */
-void HS::Database::scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler& ah) {
+void HS::Database::scan(const std::string& data, unsigned int flags, const HS::Scratch& scratch, HS::AbstractHandler& ah) const{
     hs_error_t res = hs_scan(
         static_cast<hs_database_t*>(ptr_),
         data.c_str(),
@@ -127,7 +156,7 @@ HS::Database::~Database() {
     }
 }
 
-HS::Stream HS::Database::openStream(unsigned int flags) {
+HS::Stream HS::Database::openStream(unsigned int flags) const {
     HS::Stream out;
     hs_error_t res = hs_open_stream(
         static_cast<hs_database_t*>(this->ptr_),
