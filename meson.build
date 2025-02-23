@@ -1,5 +1,5 @@
 project('HS_Wrapper', 'cpp',
-    version : '0.0.5',
+    version : '0.0.6',
     default_options : ['cpp_std=c++20']
 )
 
